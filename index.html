@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Mi Amor ❤️</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #ff5f8f, #ff7eb3, #ffc3a0);
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: white;
+      position: relative;
+    }
+
+    .floating-heart {
+      position: fixed;
+      bottom: -20px;
+      color: rgba(255,255,255,0.7);
+      animation: subir 8s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes subir {
+      0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      width: 90%;
+      max-width: 1000px;
+      margin: auto;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .hero {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(12px);
+      border-radius: 30px;
+      padding: 50px 30px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      animation: aparecer 1.5s ease;
+    }
+
+    h1 {
+      font-size: 4rem;
+      margin-bottom: 15px;
+      animation: glow 2s infinite alternate;
+    }
+
+    .subtitulo {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      opacity: 0.95;
+    }
+
+    .foto-principal {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 20px;
+      border: 5px solid rgba(255,255,255,0.7);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      margin: 20px 0;
+      transition: 0.4s;
+    }
+
+    .foto-principal:hover {
+      transform: scale(1.05);
+    }
+
+    .mensaje {
+      margin-top: 25px;
+      font-size: 1.2rem;
+      line-height: 1.9;
+    }
+
+    .contador {
+      margin-top: 30px;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .galeria {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .galeria img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 20px;
+      transition: 0.4s;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .galeria img:hover {
+      transform: scale(1.05);
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 15px 35px;
+      border: none;
+      border-radius: 40px;
+      background: white;
+      color: #ff4f81;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.4s;
+    }
+
+    button:hover {
+      transform: scale(1.08);
+      background: #ffe4ee;
+    }
+
+    .carta {
+      margin-top: 30px;
+      background: rgba(255,255,255,0.15);
+      padding: 25px;
+      border-radius: 20px;
+      display: none;
+      animation: aparecer 1s ease;
+      line-height: 1.8;
+    }
+
+    .frase {
+      margin-top: 35px;
+      font-size: 1.2rem;
+      font-style: italic;
+      min-height: 40px;
+    }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px rgba(255,255,255,0.5);
+      }
+      to {
+        text-shadow: 0 0 30px rgba(255,255,255,1);
+      }
+    }
+
+    audio {
+      display: none;
+    }
+
+    @media (max-width: 700px) {
+      h1 {
+        font-size: 2.8rem;
+      }
+
+      .foto-principal {
+        width: 220px;
+        height: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="hero">
+      <h1>Para Mi Amor 🩶</h1>
+
+      <p class="subtitulo">
+        Cada momento contigo se convierte en mi lugar favorito.
+      </p>
+
+      <!-- FOTO PRINCIPAL -->
+      <img src="foto1.jpeg" class="foto-principal" alt="Nuestra Foto">
+
+      <div class="mensaje">
+        Gracias por existir, por hacerme feliz y por acompañarme en cada momento.
+        Eres esa persona especial que llena mis días de amor, tranquilidad y sonrisas.
+        Quiero seguir creando recuerdos hermosos contigo y demostrarte todos los días
+        lo importante que eres para mí 🩶
+      </div>
+
+      <!-- CONTADOR -->
+      <div class="contador" id="contador"></div>
+
+      <!-- ANIVERSARIO -->
+    <div class="contador" id="aniversario"></div>
+
+      <!-- BOTÓN -->
+      <button onclick="mostrarCarta()">Abrir Carta 💌</button>
+
+      <!-- CARTA -->
+      <div class="carta" id="carta">
+        Mi amor,
+        <br><br>
+        Quiero que sepas que eres una de las mejores cosas que me ha pasado.
+        Gracias por cada abrazo, cada palabra bonita y cada momento compartido.
+        Espero que esta pequeña sorpresa te saque una sonrisa tan bonita como la que tú me sacas a mí todos los días 🩶
+      </div>
+
+      <!-- FRASES -->
+      <div class="frase" id="frase"></div>
+    </div>
+
+    <!-- GALERÍA -->
+    <div class="galeria">
+      <img src="foto1.jpeg" alt="Foto 1">
+      <img src="foto2.jpeg" alt="Foto 2">
+      <img src="foto3.jpeg" alt="Foto 3">
+    </div>
+
+  </div>
+
+  <!-- MÚSICA -->
+  <audio autoplay loop>
+    <source src="cancion.mp3" type="audio/mp3">
+  </audio>
+
+  <script>
+
+    // CARTA
+    function mostrarCarta() {
+      const carta = document.getElementById('carta');
+      carta.style.display = 'block';
+    }
+
+    // CONTADOR
+    const fechaInicio = new Date('2026-01-10');
+
+    function actualizarContador() {
+      const hoy = new Date();
+      const diferencia = hoy - fechaInicio;
+
+      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+
+      document.getElementById('contador').innerHTML =
+        `🩶 Llevamos ${dias} días juntos 🩶`;
+    }
+
+    setInterval(actualizarContador, 1000);
+    actualizarContador();
+
+    const frases = [
+      'Eres mi lugar favorito 🩶',
+      'Contigo todo es más bonito ✨',
+      'Gracias por estar para mi 🩶',
+      'Siempre tú 🩶',
+      'Mi felicidad tiene tu nombre 😍'
+    ];
+
+    let indice = 0;
+
+    function cambiarFrase() {
+      document.getElementById('frase').innerHTML = frases[indice];
+      indice = (indice + 1) % frases.length;
+    }
+    
+        // CUENTA REGRESIVA ANIVERSARIO
+    function actualizarAniversario() {
+
+    const hoy = new Date();
+
+    // 10 de enero
+    let aniversario = new Date(hoy.getFullYear(), 0, 10);
+
+    if (hoy > aniversario) {
+        aniversario = new Date(hoy.getFullYear() + 1, 0, 10);
+    }
+
+    const diferencia = aniversario - hoy;
+
+    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+    const minutos = Math.floor((diferencia / 1000 / 60) % 60);
+    const segundos = Math.floor((diferencia / 1000) % 60);
+
+    document.getElementById('aniversario').innerHTML =
+        `🎉 Faltan ${dias} días, ${horas}h ${minutos}m ${segundos}s para nuestro aniversario 🩶`;
+    }
+
+    setInterval(actualizarAniversario, 1000);
+    actualizarAniversario();
+
+    setInterval(cambiarFrase, 3000);
+    cambiarFrase();
+
+    // CORAZONES
+    function crearCorazon() {
+      const heart = document.createElement('div');
+      heart.classList.add('floating-heart');
+      heart.innerHTML = '🩶';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.fontSize = (Math.random() * 25 + 15) + 'px';
+      heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 8000);
+    }
+
+    setInterval(crearCorazon, 250);
+
+  </script>
+
+</body>
+</html>
